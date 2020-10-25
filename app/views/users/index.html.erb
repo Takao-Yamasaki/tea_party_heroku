@@ -6,6 +6,7 @@
     <%= user.email %>
     <%= user.image_url %>
     <%= user.password %>
-    <%= link_to '削除' "/users/#{user.id}", method: :delete, data{confirm: "削除しますか？"} %>
+    <%= link_to '削除', "/users/#{user.id}", method: :delete, data{confirm: "削除しますか？"} %>
+    <%= link_to '編集', "/users/#{user.id}/edit", method: :get %>
   </p>
 <% end %>
