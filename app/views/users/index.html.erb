@@ -1,0 +1,10 @@
+<%= link_to "投稿画面へ", "/users/new" %>
+<% @users.each do |user| %>
+  <p>
+    <%= user.first_name %>
+    <%= user.last_name %>
+    <%= user.email %>
+    <%= user.image_url %>
+    <%= user.password %>
+  </p>
+<% end %>
