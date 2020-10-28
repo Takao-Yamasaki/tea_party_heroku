@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   get '/hosts', to: 'hosts#index'
   get '/hosts/new', to: 'hosts#new'
   post '/hosts', to: 'hosts#create'
+  delete '/hosts/:id', to: 'hosts#destroy'
 end

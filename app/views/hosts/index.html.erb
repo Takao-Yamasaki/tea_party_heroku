@@ -7,5 +7,6 @@
     <%= host.email %>
     <%= host.image_url %>
     <%= host.password %>
+    <%= link_to '削除', "/hosts/#{host.id}", method: :delete,data: {confirm: "削除しますか？"} %>
   </p>
 <% end %>
