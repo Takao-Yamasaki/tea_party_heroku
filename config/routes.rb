@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   get '/hosts', to: 'hosts#index'
   get '/hosts/new', to: 'hosts#new'
   post '/hosts', to: 'hosts#create'
+  get '/hosts/:id/edit', to: 'hosts#edit'
+  patch '/hosts/:id', to: 'hosts#update'
   delete '/hosts/:id', to: 'hosts#destroy'
 end
