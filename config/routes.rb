@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   patch '/users/:id' , to: 'users#update'
   delete '/users/:id', to: 'users#destroy'
 
+  get '/hosts', to: 'hosts#index'
   get '/hosts/new', to: 'hosts#new'
   post '/hosts', to: 'hosts#create'
 end

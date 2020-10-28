@@ -1,0 +1,11 @@
+<%= link_to "登録画面へ", "/hosts/new" %>
+<% @hosts.each do |host| %>
+  <p>
+    <%= host.id %>
+    <%= host.first_name %>
+    <%= host.last_name %>
+    <%= host.email %>
+    <%= host.image_url %>
+    <%= host.password %>
+  </p>
+<% end %>
