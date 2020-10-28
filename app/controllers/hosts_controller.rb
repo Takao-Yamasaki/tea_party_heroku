@@ -9,10 +9,7 @@ class HostsController < ApplicationController
 
   def create
     Host.create(host_params)
-  end
-
-  def edit
-    @host = Host.find(params[:id])
+    redirect_to action: :index
   end
 
   def edit
@@ -22,11 +19,13 @@ class HostsController < ApplicationController
   def update
     host = Host.find(params[:id])
     host.update(host_params)
+    redirect_to action :index
   end
 
   def destroy
     host = Host.find(params[:id])
     host.destroy
+    redirect_to action: :index
   end
 
   private
