@@ -1,6 +1,6 @@
 class HostsController < ApplicationController
   def index
-    @hosts = Host.all
+    @hosts = Host.order(:id)
   end
 
   def new
