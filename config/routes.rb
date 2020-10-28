@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   get '/hosts/:id/edit', to: 'hosts#edit'
   patch '/hosts/:id', to: 'hosts#update'
   delete '/hosts/:id', to: 'hosts#destroy'
+
+  get '/experiences/new', to: 'experiences#new'  
 end
