@@ -1,0 +1,12 @@
+<p>更新</p>
+<%= form_with model: @experience, url:"/experiences/#{@experience.id}", method: :patch, local: true do |f| %>
+  <%= f.text_field :title %>
+  <%= f.text_field :fee %>
+  <%= f.text_field :prefecture %>
+  <%= f.text_field :region %>
+  <%= f.text_field :content %>
+  <%= f.text_field :start_datetime %>
+  <%= f.text_field :finish_datetime %>
+  <%= f.text_field :language %>
+  <%= f.submit "登録" %>
+<% end %>

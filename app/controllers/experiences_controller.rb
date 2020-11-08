@@ -13,6 +13,16 @@ class ExperiencesController < ApplicationController
     redirect_to action: :index
   end
 
+  def edit
+    @experience = Experience.find(params[:id])
+  end
+
+  def update
+    experience = Experience.find(params[:id])
+    experience.update(experience_params)
+    redirect_to action: :index
+  end
+
   def destroy
     experience = Experience.find(params[:id])
     experience.destroy
