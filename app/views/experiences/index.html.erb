@@ -13,6 +13,6 @@
     <%= experience.finish_datetime %>
     <%= experience.language %>.id
     <%= link_to '削除', "/experiences/#{experience.id}", method: :delete, data: {confirm: "削除しますか？"} %>
-    <%= link_to '編集', "/experineces/#{experience.id}/edit", method: :get %>
+    <%= link_to '編集', "/experiences/#{experience.id}/edit", method: :get %>
   </p>
 <% end %>
