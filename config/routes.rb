@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'users#index'
+  root to: 'experiences#index'
   get '/users', to: 'users#index'
   get '/users/new', to: 'users#new'
   post '/users', to: 'users#create'
@@ -14,5 +14,7 @@ Rails.application.routes.draw do
   patch '/hosts/:id', to: 'hosts#update'
   delete '/hosts/:id', to: 'hosts#destroy'
 
-  get '/experiences/new', to: 'experiences#new'  
+  get '/experiences', to: 'experiences#index'
+  get '/experiences/new', to: 'experiences#new'
+  post '/experiences', to: 'experiences#create'
 end

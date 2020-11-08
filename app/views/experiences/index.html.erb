@@ -1,0 +1,13 @@
+<%= link_to "投稿画面へ", "/experiences/new" %>
+<% @experiences.each do |experience|%>
+  <p>
+    <%= experience.title %>
+    <%= experience.fee %>
+    <%= experience.prefecture %>
+    <%= experience.region %>
+    <%= experience.content %>
+    <%= experience.start_datetime %>
+    <%= experience.finish_datetime %>
+    <%= experience.language %>
+  </p>
+<% end %>
