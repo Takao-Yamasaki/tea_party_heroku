@@ -1,4 +1,7 @@
 <%= link_to "投稿画面へ", "/experiences/new" %>
+<h1>身近にある、特別な茶摘み体験</h1>
+<p>茶摘みを体験してみませんか？</p>
+<p>あなたにぴったりな茶摘みを近場で見つけましょう</p>
 <% @experiences.each do |experience|%>
   <p>
     <%= experience.title %>
@@ -8,6 +11,7 @@
     <%= experience.content %>
     <%= experience.start_datetime %>
     <%= experience.finish_datetime %>
-    <%= experience.language %>
+    <%= experience.language %>.id
+    <%= link_to '削除', "/experiences/#{experience.id}", method: :delete, data: {confirm: "削除しますか？"} %>
   </p>
 <% end %>

@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   get '/experiences', to: 'experiences#index'
   get '/experiences/new', to: 'experiences#new'
   post '/experiences', to: 'experiences#create'
+  delete '/experiences/:id', to: 'experiences#destroy'
 end

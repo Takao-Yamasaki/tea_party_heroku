@@ -13,6 +13,12 @@ class ExperiencesController < ApplicationController
     redirect_to action: :index
   end
 
+  def destroy
+    experience = Experience.find(params[:id])
+    experience.destroy
+    redirect_to action: :index
+  end
+
   private
   def experience_params
     params.require(:experience).permit(:title, :fee, :prefecture, :region, :content, :start_datetime, :finish_datetime, :language)
