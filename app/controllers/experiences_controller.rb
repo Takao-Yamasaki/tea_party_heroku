@@ -1,7 +1,10 @@
 class ExperiencesController < ApplicationController
   before_action :authenticate_user!, except: :index
+  
+  PER_PAGE = 10
   def index
-    @experiences = Experience.all
+    @q = Experience.ransack(params[:q])
+    @experiences = Experience.page(params[:page]).per(PER_PAGE)
   end
 
   def new
