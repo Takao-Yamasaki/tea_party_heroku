@@ -3,7 +3,7 @@
 <p>あなたにぴったりな茶摘みを近場で見つけましょう</p>
 <%= search_form_for @q do |f| %>
   <%= f.label :prefecture_cont, "都道府県" %>
-  <%= f.search_field :prefecture_cont %>
+  <%= f.search_field :prefecture_eq %>
   <%= f.label :start_datetime_eq, "開催日" %>
   <%= f.search_field :start_datetime_eq %>
   <%= f.submit "探す"%>
@@ -11,16 +11,11 @@
 
 <% @experiences.each do |experience|%>
   <p>
-    <%= experience.title %>
-    <%= experience.fee %>
+    <%= link_to experience.title,experience_path(experience) %>
+    <%= experience.fee %>円
     <%= experience.prefecture %>
     <%= experience.region %>
-    <%= experience.content %>
     <%= experience.start_datetime %>
-    <%= experience.finish_datetime %>
-    <%= experience.language %>.id
-    <%= link_to '削除', "/experiences/#{experience.id}", method: :delete, data: {confirm: "削除しますか？"} %>
-    <%= link_to '編集', "/experiences/#{experience.id}/edit", method: :get %>
   </p>
   <%= paginate @experiences %>
 <% end %>

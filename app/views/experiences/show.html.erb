@@ -1,0 +1,11 @@
+  <h1>体験詳細</h1>
+  <p>タイトル：<%= @experience.title %></p>
+  <p>料金：<%= @experience.fee %></p>
+  <p>都道府県：<%= @experience.prefecture %></p>
+  <p>地域：<%= @experience.region %></p>
+  <p>内容：<%= @experience.content %></p>
+  <p>開始日時：<%= @experience.start_datetime %></p>
+  <p>終了日時：<%= @experience.finish_datetime %></p>
+  <p>対応言語：<%= @experience.language %></p>
+  <p><%= link_to '削除', "/experiences/#{@experience.id}", method: :delete, data: {confirm: "削除しますか？"} %></p>
+  <p><%= link_to '編集', "/experiences/#{@experience.id}/edit", method: :get %></p>
