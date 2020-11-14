@@ -10,12 +10,16 @@
 <% end %>
 
 <% @experiences.each do |experience|%>
-  <p>
-    <%= link_to experience.title,experience_path(experience) %>
-    <%= experience.fee %>円
-    <%= experience.prefecture %>
-    <%= experience.region %>
-    <%= experience.start_datetime %>
-  </p>
-  <%= paginate @experiences %>
+  <% if @experiences.count == 0 %>
+    <p>お探しの体験はありませんでした</p>
+  <% else %>
+    <p>
+      <%= link_to experience.title,experience_path(experience) %>
+      <%= experience.fee %>円
+      <%= experience.prefecture %>
+      <%= experience.region %>
+      <%= experience.start_datetime %>
+    </p>
+    <%= paginate @experiences %>
+  <% end %>
 <% end %>

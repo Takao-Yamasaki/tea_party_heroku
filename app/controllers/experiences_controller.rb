@@ -4,7 +4,7 @@ class ExperiencesController < ApplicationController
   PER_PAGE = 10
   def index
     @q = Experience.ransack(params[:q])
-    @experiences = Experience.page(params[:page]).per(PER_PAGE)
+    @experiences = @q.result.page(params[:page]).per(PER_PAGE)
   end
 
   def show
