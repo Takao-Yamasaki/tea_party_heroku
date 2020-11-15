@@ -1,0 +1,6 @@
+<h1>新規予約</h1>
+<%= form_with model: @booking, local: true do |f| %>
+  <p>ユーザーID：<%= f.text_field :user_id, value: @experience_id %></p>
+  <p>体験ID：<%= f.text_field :experience_id %></p>
+  <%= f.submit "予約する" %>
+<% end %>
