@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root to: 'experiences#index'
   devise_for :users
-  resources :experiences
+  resources :experiences do
+    resources :bookings
+  end
   resources :hosts
-  resources :bookings
+  
 end

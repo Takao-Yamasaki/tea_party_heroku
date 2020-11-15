@@ -5,12 +5,12 @@ class BookingsController < ApplicationController
   
   def new
     @booking = Booking.new
-    @experience_id = params[:id]
+    redirect_to action: :create
   end
 
   def create
-    @booking.create(booking_params)
-    redirect_to action: :index
+    Booking.create(user_id: current_user.id, experience_id: params[:experience_id])
+    render("bookings/create")
   end
 
   def edit

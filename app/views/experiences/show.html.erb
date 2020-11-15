@@ -7,6 +7,6 @@
   <p>開始日時：<%= @experience.start_datetime %></p>
   <p>終了日時：<%= @experience.finish_datetime %></p>
   <p>対応言語：<%= @experience.language %></p>
-  <%= link_to '予約する', new_booking_path(@experience.id) %>
+  <%= link_to '予約する', experience_bookings_path(@experience.id), method: :post %>
   <p><%= link_to '削除', "/experiences/#{@experience.id}", method: :delete, data: {confirm: "削除しますか？"} %></>
   <p><%= link_to '編集', "/experiences/#{@experience.id}/edit", method: :get %></p>
