@@ -8,5 +8,6 @@
   <p>開始日時：<%= f.datetime_field :start_datetime %></p>
   <p>終了日時：<%= f.datetime_field :finish_datetime %></p>
   <p>対応言語：<%= f.text_field :language %></p>
+  <p>画像：<%= f.file_field :image %></p>
   <%= f.submit "登録" %>
 <% end %>

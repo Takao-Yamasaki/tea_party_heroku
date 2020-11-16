@@ -1,6 +1,7 @@
   <h1>体験詳細</h1>
+  <p><%= image_tag @experience.image.url%></p>
   <p>タイトル：<%= @experience.title %></p>
-  <p>料金：<%= @experience.fee %></p>
+  <p>料金：<%= @experience.fee %>円</p>
   <p>都道府県：<%= @experience.prefecture %></p>
   <p>地域：<%= @experience.region %></p>
   <p>内容：<%= @experience.content %></p>
