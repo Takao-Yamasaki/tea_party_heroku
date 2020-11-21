@@ -24,6 +24,8 @@ gem 'rails-i18n', '~> 6.0'
 gem 'devise-i18n'
 # 画像投稿機能
 gem 'carrierwave', '~> 2.0'
+# 画像ファイルの加工
+gem 'mini_magick'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
