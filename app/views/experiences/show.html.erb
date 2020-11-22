@@ -9,10 +9,9 @@
   <p>終了日時：<%= @experience.finish_datetime %></p>
   <p>対応言語：<%= @experience.language %></p>
   
-  <% if Booking.where(user_id: current_user.id).any? %>
+  <% if Booking.where(user_id: current_user.id, experience_id: params[:id]).any? %>
     <p>予約済<p>
-    <p><%= link_to '削除', "/experiences/#{@experience.id}", method: :delete, data: {confirm: "削除しますか？"} %></>
-    <p><%= link_to '編集', "/experiences/#{@experience.id}/edit", method: :get %></p>
+    <p><%= link_to '予約をキャンセルする', experience_booking_path(@experience.id), method: :delete, data: {confirm: "予約をキャンセルしますか？"} %></>
   <% else %>
     <%= link_to '予約する', experience_bookings_path(@experience.id), method: :post %>
   <% end %>

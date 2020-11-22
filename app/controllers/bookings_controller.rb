@@ -24,8 +24,9 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-    @booking.destroy
-    redirect_to action: :index
+    booking = Booking.find_by(user_id: current_user.id, experience_id: params[:experience_id])
+    booking.destroy
+    render("bookings/destroy")
   end
 
   private
