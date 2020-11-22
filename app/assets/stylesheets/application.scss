@@ -20,10 +20,6 @@
  @import "@fortawesome/fontawesome-free/scss/fontawesome";
  @import "@fortawesome/fontawesome-free/scss/regular";
 
-  input {
-    border: 2px solid red;
-  }
-
 //  共通
 .base-container {
   @extend .container-fluid;

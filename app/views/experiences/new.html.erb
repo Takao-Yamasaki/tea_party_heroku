@@ -1,4 +1,4 @@
-<p>新規登録</p>
+<h1>体験をホストする</h1>
 <%= form_with model: @experience, url:"/experiences", method: :post, local: true do |f| %>
   <p>タイトル：<%= f.text_field :title %></p>
   <p>料金：<%= f.text_field :fee %></p>
@@ -9,5 +9,5 @@
   <p>終了日時：<%= f.datetime_field :finish_datetime %></p>
   <p>対応言語：<%= f.text_field :language %></p>
   <p>画像：<%= f.file_field :image %></p>
-  <%= f.submit "登録" %>
+  <%= f.submit "掲載をはじめる" %>
 <% end %>
