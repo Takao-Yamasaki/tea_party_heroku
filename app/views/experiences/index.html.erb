@@ -3,25 +3,29 @@
 <p>あなたにぴったりな茶摘みを近場で見つけましょう</p>
 
 <%= search_form_for @q do |f| %>
-  <%= f.label :prefecture_cont, "都道府県" %>
-  <%= f.search_field :prefecture_eq %>
-  <%= f.label :start_datetime_eq, "開催日" %>
-  <%= f.search_field :start_datetime_eq %>
+  <%= f.search_field :prefecture_cont, placeholder: "行き先はどちら" %>
+  <%= f.date_field :start_datetime_cont, placeholder: "日付を追加" %>
   <%= f.submit "探す"%>
 <% end %>
 
-<% @experiences.each do |experience|%>
-  <% if @experiences.count == 0 %>
-    <p>お探しの体験はありませんでした</p>
+<p><%= @experiences.total_count %>件の体験を表示しています</p>
+
+  <% if @experiences.any? %>
+    <div class="row">
+    <% @experiences.each do |experience| %>
+      <div class="col-md-4 border rounded ">
+        <%= link_to(experience_path(experience)) do %>
+          <p><%= image_tag experience.image.url, size: '300x300' %></p>
+          <p>
+            <%= experience.prefecture %>
+            <%= experience.title %>
+            <%= experience.fee %>円
+          </p>
+        <% end %>
+      </div>
+    <% end %>
+    </div>
   <% else %>
-    <p>
-      <%= link_to experience.title,experience_path(experience) %>
-      <%= image_tag experience.image.url %>
-      <%= experience.fee %>円
-      <%= experience.prefecture %>
-      <%= experience.region %>
-      <%= experience.start_datetime %>
-    </p>
-    <%= paginate @experiences %>
+    <p>お探しの体験はありませんでした</p> 
   <% end %>
-<% end %>
+  <%= paginate @experiences %>
