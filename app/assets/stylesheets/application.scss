@@ -20,19 +20,15 @@
  @import "@fortawesome/fontawesome-free/scss/fontawesome";
  @import "@fortawesome/fontawesome-free/scss/regular";
 
- . field_with_errors {
-  display: contents;
-
   input {
     border: 2px solid red;
   }
- }
 
 //  共通
 .base-container {
   @extend .container-fluid;
   max-width: var(-breakpoint-lg);
-  padding: : 30px 15px;
+  padding: 30px 15px;
 }
 
 body {
