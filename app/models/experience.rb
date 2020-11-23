@@ -1,6 +1,14 @@
 class Experience < ApplicationRecord
-
+  # バリデーションと関連付け
+  has_many :likes, dependent: :destroy
+  # experience.liked_usersでexperienceをいいねしているユーザの一覧を取得できる
+  has_many :liked_users, through: :likes, source: :user
   mount_uploader :image, ImageUploader
+
+  # いいねしているか判定
+  def liked_by?(user)
+    likes.find_by(user_id: user.id).present?
+  end
 
   scope :start_after, -> (datetime) {
     datetime = datetime.to_datetime
@@ -12,4 +20,5 @@ class Experience < ApplicationRecord
       [:start_after]
     end
   end
+
 end
