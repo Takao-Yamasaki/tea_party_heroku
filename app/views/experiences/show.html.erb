@@ -10,9 +10,9 @@
   <p>対応言語：<%= @experience.language %></p>
   <p>
     <% if @experience.liked_by?(current_user) %>
-      <%= link_to "★", experience_likes_path(@experience), method: :delete %> 
+      <%= render "like", experience: @experience %>
     <% else %>
-      <%= link_to "☆", experience_likes_path(@experience), method: :post %>
+      <%= render "dislike", experience: @experience %>
     <% end %>
   </p>
   <% if Booking.where(user_id: current_user.id, experience_id: params[:id]).any? %>

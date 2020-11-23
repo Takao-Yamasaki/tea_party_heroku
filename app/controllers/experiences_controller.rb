@@ -8,6 +8,7 @@ class ExperiencesController < ApplicationController
     }
     @q = Experience.ransack(params[:q], search_option)
     @experiences = @q.result.page(params[:page]).page(params[:page]).per(PER_PAGE)
+    @likes_experience_ids = current_user.likes.pluck(:experience_id)
   end
 
   def show

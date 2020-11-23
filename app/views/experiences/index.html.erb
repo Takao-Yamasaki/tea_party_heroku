@@ -20,6 +20,12 @@
             <%= experience.prefecture %>
             <%= experience.title %>
             <%= experience.fee %>円
+            
+            <% if @likes_experience_ids.include?(experience.id) %>
+              <%= render "like", experience: experience %>
+            <% else %>
+              <%= render "dislike", experience: experience %>
+            <% end %>
           </p>
         <% end %>
       </div>
