@@ -6,8 +6,8 @@
   </button>
   <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
     <% if user_signed_in? %>
-        <%= link_to "予約中の体験"%>
-        <%= link_to "体験をホストする", new_experience_path, class: "nav-item nav-link active"%>
+        <%= link_to "予約中の体験", user_bookings_path(current_user.id), class: "nav-item nav-link active" %>
+        <%= link_to "体験をホストする", new_experience_path, class: "nav-item nav-link active" %>
         <%= link_to "アカウントを編集する", edit_user_registration_path, class: "nav-item nav-link active" %>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしますか？"} , class: "nav-item nav-link active" %>
       <% else %>
