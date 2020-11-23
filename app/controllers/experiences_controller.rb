@@ -3,7 +3,10 @@ class ExperiencesController < ApplicationController
   
   PER_PAGE = 10
   def index
-    @q = Experience.ransack(params[:q])
+    search_option = {
+     start_after: params[:start_after]
+    }
+    @q = Experience.ransack(params[:q], search_option)
     @experiences = @q.result.page(params[:page]).page(params[:page]).per(PER_PAGE)
   end
 
