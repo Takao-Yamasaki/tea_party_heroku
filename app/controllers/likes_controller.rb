@@ -1,11 +1,11 @@
 class LikesController < ApplicationController
   def create
-    current_user.likes.create!(experience_id: params[:experience_id])
-    redirect_back(fallback_location: root_path)
+    @experience = Experience.find(params[:experience_id])
+    current_user.likes.create!(experience_id: @experience.id)
   end
 
   def destroy
-    current_user.likes.find_by(experience_id: params[:experience_id]).destroy
-    redirect_back(fallback_location: root_path)
+    @experience = Experience.find(params[:experience_id])
+    current_user.likes.find_by(experience_id: @experience.id).destroy!
   end
 end
