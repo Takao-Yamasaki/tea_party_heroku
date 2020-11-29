@@ -1,9 +1,8 @@
 <h1>予約中の旅</h1>
 <% @bookings.each do |booking| %>
   <div>
-    <p>体験ID：<%= booking.id %></p>
-    <p>ユーザーID：<%= booking.user_id %></p>
-    <p>体験ID：<%= booking.experience_id %></p>
+    <p>体験：<%= booking.experience.title %></p>
+    <p>日時：<%= booking.experience.start_datetime %><p>
   </div>
   <br>
 <% end %>
