@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :bookings, dependent: :destroy
+  has_many :booking_experiences, through: :bookings, source: :experience
   # バリデーションと関連付け
   has_many :likes, dependent: :destroy
   # user.liked_postsでuserがいいねしている体験一覧を取得できるようになる
