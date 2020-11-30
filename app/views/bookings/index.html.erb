@@ -2,7 +2,8 @@
 <% @bookings.each do |booking| %>
   <div>
     <p>体験：<%= booking.experience.title %></p>
-    <p>日時：<%= booking.experience.start_datetime %><p>
+    <!-- lメソッドを使って書式を設定する -->
+    <p>日時：<%= l booking.experience.start_datetime, format: :short %><p>
   </div>
   <br>
 <% end %>

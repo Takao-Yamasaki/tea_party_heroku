@@ -10,7 +10,9 @@ module Teaparty
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
+    # デフォルトのロケールを日本に設定
     config.i18n.default_locale = :ja
+    # タイムゾーンを日本時間に設定
     config.time_zone = 'Asia/Tokyo'
   end
 end
