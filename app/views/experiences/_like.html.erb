@@ -1,1 +1,3 @@
-<%= link_to "★", experience_likes_path(experience), method: :delete, remote: true %> 
+<%= link_to(experience_likes_path(experience), {method: :delete}, {remote: true}) do %>
+  <span class="fa fa-heart like-btn"></span>
+<% end %> 
