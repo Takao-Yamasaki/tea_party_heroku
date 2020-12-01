@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :experiences do
     resource :likes, only: [:create, :destroy]
     resources :bookings
+    resources :reviews, only: [:index, :create]
   end
   resources :hosts
   

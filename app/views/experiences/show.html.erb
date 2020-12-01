@@ -16,9 +16,12 @@
       <%= render "dislike", experience: @experience %>
     <% end %>
   </p>
+  
   <% if Booking.where(user_id: current_user.id, experience_id: params[:id]).any? %>
     <p>予約済<p>
     <p><%= link_to '予約をキャンセルする', experience_booking_path(@experience.id), method: :delete, data: {confirm: "予約をキャンセルしますか？"} %></>
   <% else %>
     <%= link_to '予約する', experience_bookings_path(@experience.id), method: :post %>
   <% end %>
+
+  <%= render 'reviews/form', review: @review, experience: @experience %>
