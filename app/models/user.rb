@@ -6,6 +6,8 @@ class User < ApplicationRecord
   # user.liked_postsでuserがいいねしている体験一覧を取得できるようになる
   has_many :liked_experiences, through: :likes, source: :experience
   
+  has_many :review, dependent: :destroy
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   

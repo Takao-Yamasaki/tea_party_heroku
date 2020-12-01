@@ -21,7 +21,7 @@
             <%= experience.title %>
             <%= experience.fee %>円
             <p id="experience-<%= experience.id %>">
-              <% if @likes_experience_ids.include?(experience.id) %>
+              <% if @liked_experience_ids.include?(experience.id) %>
                 <%= render "like", experience: experience %>
               <% else %>
                 <%= render "dislike", experience: experience %>

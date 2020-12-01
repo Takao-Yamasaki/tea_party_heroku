@@ -1,1 +1,1 @@
-document.getElementById('experience-<% @experience.id %>').innerHTML = '<%= j render("experiences/like", experience: @experience) %>'
+document.getElementById('experience-<% @experience.id %>').innerHTML = '<%= j(render("experiences/like", experience: @experience)) %>'

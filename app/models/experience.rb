@@ -5,6 +5,9 @@ class Experience < ApplicationRecord
   has_many :likes, dependent: :destroy
   # experience.liked_usersでexperienceをいいねしているユーザの一覧を取得できる
   has_many :liked_users, through: :likes, source: :user
+  
+  has_many :reviews, dependent: :destroy
+  
   mount_uploader :image, ImageUploader
 
   # いいねしているか判定
