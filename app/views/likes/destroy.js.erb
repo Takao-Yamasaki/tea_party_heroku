@@ -1,1 +1,3 @@
-document.getElementById('experience-<%= @experience.id %>').innerHTML = '<%= j(render("experiences/dislike", experience: @experience)) %>'
+window.onload = function(){
+  document.getElementById('experience-<%= @experience.id %>').innerHTML = '<%= j render("experiences/dislike", experience: @experience) %>'
+}

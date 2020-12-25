@@ -1,21 +1,28 @@
-<p class="is-size-4 mb-3">レビューを書く</p>
+<%= form_for [@experience, @review] do |f| %>
+  <div class="field">
+  <div>
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+  </div>
 
-<div class="ratiing-box mb-3">
-  <%= form_with model: review, url: experience_reviews_path(experience), local:true do |f| %>
-      <div class="main-rating">
-        <div class="ratings mb-3">
-           <span class="fa fa-star-o" aria-hidden="true" id="star"></span>
-           <span class="fa fa-star-o" aria-hidden="true" id="star"></span>
-           <span class="fa fa-star-o" aria-hidden="true" id="star"></span>
-           <span class="fa fa-star-o" aria-hidden="true" id="star"></span>
-           <span class="fa fa-star-o" aria-hidden="true" id="star"></span>
-        </div>
-        <div class="ml-3 rating-value-display"><span id="rating-value-display">0</span>/5</div>
-      </div>
-      <%= f.hidden_field :experience_id, value: experience.id %>
-      <%= f.hidden_field :rating, id: "rating-value" %>
-      <%= f.text_field :content, class: "textarea" %>
-      <%= f.submit "保存", class: "button mt-3" %>
-      <%= link_to "他のレビューを見る", experience_reviews_path(experience), class: "button light ml-3 mt-3 " %>
-  <% end %>
-</div>
+  <div>
+    <%= f.submit %>
+  </div>
+
+  <div class="form-group row" id="star">
+    <%= f.label :rating,'評価', class:'col-md-3 col-form-label'%>
+    <%= f.hidden_field :rating, id: :review_star %>
+  <div>
+
+   <!-- 評価javascript -->
+  <script>
+  $('#star').raty({
+    size     : 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    scoreName: 'review[rating]',
+    half: false,
+  });
+  </script>  
+
+<% end %>

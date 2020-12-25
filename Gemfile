@@ -8,7 +8,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.1'
 gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.0'
-gem 'turbolinks', '~> 5'
+# gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 #サンプルデータの生成
@@ -27,10 +27,12 @@ gem 'carrierwave', '~> 2.0'
 # 画像ファイルの加工
 gem 'mini_magick'
 
-gem 'jquery-rails'
+# gem 'jquery-rails'
+
+gem "font-awesome-rails"
 
 # 星レビューのデザイン用
-# gem "bulma-rails", "~> 0.4.2"
+# gem 'bulma-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
