@@ -25,5 +25,4 @@ class Experience < ApplicationRecord
       [:start_after]
     end
   end
-
 end

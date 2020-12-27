@@ -9,14 +9,15 @@
   <p>終了日時：<%= @experience.finish_datetime %></p>
   <p>対応言語：<%= @experience.language %></p>
   
-  <p id="experience-<%= @experience.id %>">
-    <% if @experience.liked_by?(current_user) %>
-      <%= render "like", experience: @experience %>
-    <% else %>
-      <%= render "dislike", experience: @experience %>
-    <% end %>
-  </p>
-  
+  <!-- ***** いいねの pタグ に id 属性を追加 ***** -->
+<p id="experience-<%= @experience.id %>">
+  <% if @experience.liked_by?(current_user) %>
+    <%= render partial: "like", experience: @experience %>
+  <% else %>
+    <%= render partial: "dislike", experience: @experience %>
+  <% end %>
+</p>
+
   <% if Booking.where(user_id: current_user.id, experience_id: params[:id]).any? %>
     <p>予約済<p>
     <p><%= link_to '予約をキャンセルする', experience_booking_path(@experience.id), method: :delete, data: {confirm: "予約をキャンセルしますか？"} %></>
