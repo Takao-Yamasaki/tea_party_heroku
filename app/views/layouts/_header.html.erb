@@ -1,18 +1,22 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-  <%= link_to "ちゃりっぷ", experiences_path, class: "navbar-brand" %>
+  <%= link_to experiences_path, class: "navbar-brand" do %>
+    Tearip
+    <i class="fas fa-leaf"></i>
+  <% end %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="#navbarSupportedContent" aria-expand="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon">
     </span>
   </button>
   <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
     <% if user_signed_in? %>
-        <%= link_to "予約中の体験", user_bookings_path(current_user.id), class: "nav-item nav-link active" %>
-        <%= link_to "体験をホストする", new_experience_path, class: "nav-item nav-link active" %>
-        <%= link_to "アカウントを編集する", edit_user_registration_path, class: "nav-item nav-link active" %>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしますか？"} , class: "nav-item nav-link active" %>
-      <% else %>
-        <%= link_to "ログイン", new_user_session_path, class: "nav-item nav-link active" %>
-        <%= link_to "登録する", new_user_registration_path, class: "nav-item nav-link active" %>
-      <% end %>
+      <%= link_to "予約中の体験", user_bookings_path(current_user.id), class: "nav-item nav-link active" %>
+      <%= link_to "体験をホストする", new_experience_path, class: "nav-item nav-link active" %>
+      <%= link_to "アカウントを編集する", edit_user_registration_path, class: "nav-item nav-link active" %>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしますか？"} , class: "nav-item nav-link active" %>
+    <% else %>
+      <%= link_to "ログイン", new_user_session_path, class: "nav-item nav-link active" %>
+      <%= link_to "登録する", new_user_registration_path, class: "nav-item nav-link active" %>
+    <% end %>
   </div>
+  <i class="fas fa-user-circle"></i>
 </nav>

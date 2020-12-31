@@ -1,13 +1,16 @@
-<h1>身近にある、特別な茶摘み体験</h1>
-<p>茶摘みを体験してみませんか？</p>
-<p>あなたにぴったりな茶摘みを近場で見つけましょう</p>
+<div class="main-container">
+  <h1>身近にある、特別な茶摘み体験。</h1>
+  <dl class="searchbox">
+    <%= search_form_for @q do |f| %>
+    <dt><%= f.search_field :prefecture_cont, placeholder: "行き先はどちらですか？" %></dt>
+    <dt><%= f.date_field :start_after, placeholder: "希望日を追加" %></dt>
+    <dd><%= f.submit "探す"%>
+  <% end %>
+  </dl>
+</div>
 
-<%= search_form_for @q do |f| %>
-  <%= f.search_field :prefecture_cont, placeholder: "行き先はどちら" %>
-  <%= f.date_field :start_after, placeholder: "日付を追加" %>
-  <%= f.submit "探す"%>
-<% end %>
-
+<h2>茶摘みを体験しよう</h2>
+<p>現地の生産者が案内するユニークな体験。</p>
 <p><%= @experiences.total_count %>件の体験を表示しています</p>
 
   <% if @experiences.any? %>

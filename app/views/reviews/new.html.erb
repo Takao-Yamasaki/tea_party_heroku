@@ -1,0 +1,32 @@
+<h1>口コミ投稿</h1>
+<%= form_with model: [@experience, @review], local: true do |f| %>
+  <div class="field">
+  <div>
+    <%= f.label :content,'コメント' %>
+    <%= f.text_area :content %>
+  </div>
+
+  <div class="form-group row" id="star">
+    <p>
+      <%= f.label :rating,'評価', class:'col-md-3 col-form-label'%>
+      <%= f.hidden_field :rating, id: :review_star %>
+    </p>
+  <div>
+
+  <!-- 評価javascript -->
+  <script>
+  $('#star').raty({
+    size     : 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    scoreName: 'review[rating]',
+    half: false,
+  });
+  </script>  
+
+  <div>
+    <p><%= f.submit "レビューをする" %></p>
+  </div>
+<% end %>
+
+

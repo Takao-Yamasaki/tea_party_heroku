@@ -1,14 +1,5 @@
-  <h1>体験詳細</h1>
-  <p><%= image_tag @experience.image.url%></p>
-  <p>タイトル：<%= @experience.title %></p>
-  <p>料金：<%= @experience.fee %>円</p>
-  <p>都道府県：<%= @experience.prefecture %></p>
-  <p>地域：<%= @experience.region %></p>
-  <p>内容：<%= @experience.content %></p>
-  <p>開始日時：<%= @experience.start_datetime %></p>
-  <p>終了日時：<%= @experience.finish_datetime %></p>
-  <p>対応言語：<%= @experience.language %></p>
-  
+  <h1>体験</h1>
+
   <!-- ***** いいねの pタグ に id 属性を追加 ***** -->
 <p id="experience-<%= @experience.id %>">
   <% if @experience.liked_by?(current_user) %>
@@ -18,11 +9,61 @@
   <% end %>
 </p>
 
+  <p><%= image_tag @experience.image.url%></p>
+  <h2><%= @experience.title %></h2>
+    <table>
+      <tr>
+        <td><i class="fas fa-yen-sign fa-lg"></i></td>
+        <td><%= @experience.fee %>円</td>
+      </tr>
+      <tr>
+        <td><i class="fas fa-map-marker-alt fa-lg"></i></td>
+        <td>
+          <%= @experience.prefecture %>
+          <%= @experience.region %>
+        </td>
+      </tr>
+      <tr>
+        <td><i class="fas fa-book fa-lg"></i></td>
+        <td><%= @experience.content %></td>
+      </tr>
+      <tr>
+        <td><i class="far fa-clock fa-lg"></i></td>
+        <td>
+          開始日時：<%= l @experience.start_datetime, format: :short %><br>
+          終了日時：<%= l @experience.finish_datetime, format: :short %>
+        </td>
+      </tr>
+      <tr>
+        <td><i class="far fa-comment fa-lg"></i></td>
+        <td><%= @experience.language %></td>
+      </td>
+    </table>
+<div>
   <% if Booking.where(user_id: current_user.id, experience_id: params[:id]).any? %>
     <p>予約済<p>
     <p><%= link_to '予約をキャンセルする', experience_booking_path(@experience.id), method: :delete, data: {confirm: "予約をキャンセルしますか？"} %></>
   <% else %>
-    <%= link_to '予約する', experience_bookings_path(@experience.id), method: :post %>
+    <p><%= link_to '予約する', experience_bookings_path(@experience.id), method: :post %></p>
   <% end %>
+</div>
 
-  <%= render 'reviews/form', review: @review, experience: @experience %>
+<%= link_to "口コミする", new_experience_review_path(experience_id: params[:id]) %>
+
+<% @reviews.each do |review| %>
+  <p>ユーザーID：<%= review.user_id %></p>
+  <p>コメント：<%= review.content %></p>
+  <p>評価：<%= review.rating %></p>
+  
+  <!--星評価-->
+  <div id="star-rate-<%= review.id %>"></div>
+  <script>
+  $('#star-rate-<%= review.id %>').raty({
+    size: 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    readOnly: true,
+    score: <%= review.rating %>,
+  });
+  </script>  
+<% end %>
