@@ -29,6 +29,8 @@ gem 'mini_magick'
 
 # gem 'jquery-rails'
 
+gem 'geocoder'
+
 gem "font-awesome-rails"
 
 # 星レビューのデザイン用
