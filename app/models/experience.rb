@@ -10,6 +10,11 @@ class Experience < ApplicationRecord
   
   mount_uploader :image, ImageUploader
 
+  # geocoderの適用
+  # :addressを登録した際にgeocoderが緯度経度ののカラムにも自動的に値を入れてくれる
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
+
   # いいねしているか判定
   def liked_by?(user)
     likes.find_by(user_id: user.id).present?
