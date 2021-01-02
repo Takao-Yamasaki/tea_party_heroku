@@ -26,3 +26,6 @@ yarn-debug.log*
 .yarn-integrity
 
 /public/uploads
+
+/.env
+GOOGLEMAP=AIzaSyAeO6xn5fNT67yK0PGW_emEonxmpdeiYf8

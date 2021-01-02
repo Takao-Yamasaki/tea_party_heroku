@@ -1,6 +1,12 @@
 <h2>gmap</h2>
 
-<% #入力フォーム %>
+<% #入力フォーム1 %>
+<%= form_with(model: @map, local: true) do |f| %>
+  <%= f.text_area :address, placeholder: "住所" %>
+  <%= f.submit "登録する"%>
+<% end %>
+
+<% #入力フォーム2 %>
 <input id="address" type="textbox" value="GeekSalon">
 <input type="button" value="Encode" onclick="codeAddress()">
 
