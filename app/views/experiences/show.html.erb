@@ -53,10 +53,12 @@
 
 <%= link_to "口コミする", new_experience_review_path(experience_id: params[:id]) %>
 
+<span>口コミ<%= @experience.reviews.count %>件</span>
+
 <% @reviews.each do |review| %>
   <p>ユーザーID：<%= review.user_id %></p>
   <p>コメント：<%= review.content %></p>
-  <p>評価：<%= review.rating %></p>
+  <p>評価：<%= review.rating %>点</p>
   
   <!--星評価-->
   <div id="star-rate-<%= review.id %>"></div>
