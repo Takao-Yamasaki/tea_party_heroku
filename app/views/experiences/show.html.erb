@@ -1,6 +1,6 @@
   <h1>体験</h1>
 
-  <!-- ***** いいねの pタグ に id 属性を追加 ***** -->
+ <!-- ***** いいねの pタグ に id 属性を追加 ***** -->
 <p id="experience-<%= @experience.id %>">
   <% if @experience.liked_by?(current_user) %>
     <%= render partial: "like", experience: @experience %>

@@ -1,0 +1,7 @@
+<dl class="searchbox">
+  <%= search_form_for @q do |f| %>
+    <dt><%= f.search_field :prefecture_cont, placeholder: "行き先はどちらですか？" %></dt>
+    <dt><%= f.date_field :start_after, placeholder: "希望日を追加" %></dt>
+    <dd><%= f.submit "探す"%>
+  <% end %>
+</dl>
