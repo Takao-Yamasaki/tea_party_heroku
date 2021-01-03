@@ -1,0 +1,43 @@
+<% #地図の表示 %>
+<div id='map'></div>
+
+<style>
+  #map {
+    height: 600px;
+    width: 600px;
+  }
+</style>
+
+<script>
+  let map
+  let geocoder
+  const display = document.getElementById('display')
+
+  function initMap(){
+      geocoder = new google.maps.Geocoder()
+      test ={lat:<%= @experience.latitude %>, lng:<%= @experience.longitude %>};
+      map = new google.maps.Map(document.getElementById('map'),{
+        // latが緯度、lagが軽度
+        center: test,
+        // 数値は０から２１まで指定
+        zoom: 12,
+      });
+      contentString = '住所：<%= @experience.address %>';
+      infowindow = new google.maps.InfoWindow({
+        content: contentString
+      });
+
+      // positionに指定した座標にピンを表示させてます
+      marker = new google.maps.Marker({
+        position:  test,
+        map: map,
+        title: contentString
+      });
+
+      marker.addListener('click', function(){
+        infowindow.open(map,marker);
+      });
+  }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAeO6xn5fNT67yK0PGW_emEonxmpdeiYf8&callback=initMap" async defer></script>

@@ -21,6 +21,7 @@
         <td>
           <%= @experience.prefecture %>
           <%= @experience.region %>
+          <%= @experience.address %>
         </td>
       </tr>
       <tr>
@@ -37,8 +38,10 @@
       <tr>
         <td><i class="far fa-comment fa-lg"></i></td>
         <td><%= @experience.language %></td>
-      </td>
+      </tr>
     </table>
+    <% #地図の表示 %>
+    <%= render partial: "map" %>
 <div>
   <% if Booking.where(user_id: current_user.id, experience_id: params[:id]).any? %>
     <p>予約済<p>
