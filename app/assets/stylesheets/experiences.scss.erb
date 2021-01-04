@@ -17,14 +17,19 @@
 }
 
 .main-container {
+  position: relative;
   color: white;
-  text-align: center;
-  display: block;
   height: 600px;
-  margin-bottom: 40px;
-  padding: 40px;
   background-size: cover;
   background-image: url("<%= asset_path('tea_top.jpg') %>") 
+}
+
+.main-container h1 {
+  font-size: 32px;
+  margin-left: 40px;
+  position: absolute;
+  top: 50%;
+  transform: translate(0,50%)
 }
 
 .navbar-brand {

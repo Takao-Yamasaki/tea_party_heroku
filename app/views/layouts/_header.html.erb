@@ -3,7 +3,7 @@
     Tearip
     <i class="fas fa-leaf"></i>
   <% end %>
-  
+    <% #検索窓 %>
     <%= search_form_for @q do |f| %>
       <%= f.search_field :prefecture_cont, placeholder: "行き先はどちらですか？", class: "form-group" %>
       <%= f.date_field :start_after, placeholder: "希望日を追加", class: "form-group" %>
