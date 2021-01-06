@@ -41,3 +41,24 @@ body {
   padding-top: 56px;
 }
 
+
+
+.btn-default {
+
+  background-color: #FF5A60;
+  border-color: #FF5A60;
+  color: #FFF;
+  border-radius: 10%;
+ 
+  &:hover {
+   background-color: #FF5A60;
+   border-color: #FF5A60;
+   color: #FFF;
+   }
+ 
+   &:active {
+    background-color: #FF5A60;
+    border-color: #FF5A60;
+    
+   }
+}
