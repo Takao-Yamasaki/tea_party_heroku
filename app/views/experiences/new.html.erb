@@ -1,14 +1,48 @@
 <h1>体験をホストする</h1>
-<%= form_with model: @experience, url:"/experiences", method: :post, local: true do |f| %>
-  <p>タイトル：<%= f.text_field :title %></p>
-  <p>料金：<%= f.text_field :fee %></p>
-  <p>都道府県：<%= f.text_field :prefecture %></p>
-  <p>地方：<%= f.collection_select :region, Region.all, :name, :name, include_blank: "選択してください" %></p>
-  <p>住所：<%= f.text_field :address, placeholder: "住所" %></p>
-  <p>内容：<%= f.text_area :content %></p>
-  <p>開始日時：<%= f.datetime_field :start_datetime %></p>
-  <p>終了日時：<%= f.datetime_field :finish_datetime %></p>
-  <p>対応言語：<%= f.text_field :language %></p>
-  <p>画像：<%= f.file_field :image %></p>
-  <%= f.submit "掲載をはじめる" %>
+<%= form_with model: @experience, url:"/experiences", method: :post, class: "card col-md-6", local: true do |f| %>
+  <div class="card-body">
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label for="inputTitle">タイトル</label>
+        <%= f.text_field :title, class: "form-control", id: "inputTitle", placeholder: "タイトル" %>
+      </div>
+      <div class="form-group col-md-12">
+        <label for="inputFee">料金</label>
+        <%= f.text_field :fee, class: "form-control", id: "inputFee", placeholder: "料金" %>
+      </div>
+    </>
+    <div class="form-group col-md-12">
+      <label for="InputPrefecture">都道府県</label>
+      <%= f.text_field :prefecture, class: "form-control", id: "InputPrefecture", placeholder: "都道府県" %>
+    </div>
+    <div class="form-group col-md-12">
+      <label for="InputRegion">地方</label>
+      <%= f.text_field :region, class: "form-control", id: "InputRegion", placeholder: "地方" %>
+    </div>
+    <div class="form-group col-md-12">
+      <label for="InputAddress">住所</label>
+      <%= f.text_field :address, class: "form-control", id: "InputAddress", placeholder: "住所" %>
+    </div>
+    <div class="form-group col-md-12">
+      <label for="InputContent">内容</label>
+      <%= f.text_area :content, class: "form-control", id: "InputContent", placeholder: "内容" %></p>
+    </div>
+    <div class="form-group col-md-12">
+      <label for="InputStartDatetime">開始日時</label>
+      <%= f.datetime_field :start_datetime, class: "form-control", id: "InputStartDatetime" %>
+    </div>
+    <div class="form-group col-md-12">
+      <label for="InputFinishDatetime">終了日時</label>
+      <%= f.datetime_field :finish_datetime, class: "form-control", id: "InputFinishDatetime" %>
+    </div>
+    <div class="form-group col-md-12">
+      <label for="InputLanguage">ガイド言語</label>
+      <%= f.text_field :language, class: "form-control", id: "InputLanguage", placeholder: "ガイド言語" %>
+    </div>
+    <div class="form-group col-md-12">
+      <label for="InputImage">画像</label>
+      <%= f.file_field :image, class: "form-control-file", id: "InputImage" %>
+    </div>
+    <%= f.submit "掲載をはじめる", class:"btn btn-primary" %>
+  </div>
 <% end %>
