@@ -13,7 +13,7 @@
       <div class="card border-0 col-lx" style="width: 21rem; margin: 10px">
         <%= link_to(experience_path(experience),{class: "card-link"}) do %>
             <%= image_tag experience.image.url, size: '300x300',class:"card-img-top rounded" %>
-            <div class="card-boy">
+            <div class="card-body">
               <% #星表示 %>
               <%= image_tag(asset_path('star-on.png')) %>
               <% #平均点 %>

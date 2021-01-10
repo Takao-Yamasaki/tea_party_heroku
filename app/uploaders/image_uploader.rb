@@ -35,6 +35,6 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   include CarrierWave::MiniMagick
   # サムネイル画像の作成
-  process resize_to_fit: [200, 300]
+  # process resize_to_fit: [200, 300]
 
 end

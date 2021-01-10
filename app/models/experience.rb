@@ -1,4 +1,5 @@
 class Experience < ApplicationRecord
+  belongs_to :user
   has_many :bookings, dependent: :destroy
   has_many :booking_users, through: :bookings, source: :user
   # バリデーションと関連付け

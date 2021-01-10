@@ -1,74 +1,124 @@
-  <h1>体験</h1>
+<div class="card border-0" style="width: 60%;">
+  <% #お気に入り機能 %>
+  <p id="experience-<%= @experience.id %>", class="text-right">
+    <% if @experience.liked_by?(current_user) %>
+      <%= render partial: "like", experience: @experience %>
+    <% else %>
+      <%= render partial: "dislike", experience: @experience %>
+    <% end %>
+  </p>
 
- <!-- ***** いいねの pタグ に id 属性を追加 ***** -->
-<p id="experience-<%= @experience.id %>">
-  <% if @experience.liked_by?(current_user) %>
-    <%= render partial: "like", experience: @experience %>
-  <% else %>
-    <%= render partial: "dislike", experience: @experience %>
-  <% end %>
-</p>
-
-  <p><%= image_tag @experience.image.url%></p>
-  <h2><%= @experience.title %></h2>
-    <table>
-      <tr>
-        <td><i class="fas fa-yen-sign fa-lg"></i></td>
-        <td><%= @experience.fee %>円</td>
-      </tr>
-      <tr>
-        <td><i class="fas fa-map-marker-alt fa-lg"></i></td>
-        <td>
-          <%= @experience.prefecture %>
-          <%= @experience.region %>
-          <%= @experience.address %>
-        </td>
-      </tr>
-      <tr>
-        <td><i class="fas fa-book fa-lg"></i></td>
-        <td><%= @experience.content %></td>
-      </tr>
-      <tr>
-        <td><i class="far fa-clock fa-lg"></i></td>
-        <td>
-          開始日時：<%= l @experience.start_datetime, format: :short %><br>
-          終了日時：<%= l @experience.finish_datetime, format: :short %>
-        </td>
-      </tr>
-      <tr>
-        <td><i class="far fa-comment fa-lg"></i></td>
-        <td><%= @experience.language %></td>
-      </tr>
-    </table>
-    <% #地図の表示 %>
-    <%= render partial: "map" %>
-<div>
-  <% if Booking.where(user_id: current_user.id, experience_id: params[:id]).any? %>
-    <p>予約済<p>
-    <p><%= link_to '予約をキャンセルする', experience_booking_path(@experience.id), method: :delete, data: {confirm: "予約をキャンセルしますか？"} %></>
-  <% else %>
-    <p><%= link_to '予約する', experience_bookings_path(@experience.id), method: :post %></p>
-  <% end %>
+  <% #イメージ画像 %>
+  <p><%= image_tag @experience.image.url, size: '800x500', class: "rounded" %></p>
+  <h2 class="card-title">
+    <%= @experience.title %>
+  </h2>
+  <div class="card-body">
+    <div class="card-text">
+    <% #星表示 %>
+        <%= image_tag(asset_path('star-on.png')) %>
+    <% #平均点 %>
+    <%= @experience.reviews.average(:rating).to_f.round(2) %>
+    <% #口コミ件数 %>
+    (<%= @experience.reviews.count %>).
+    <%= @experience.prefecture %>
+    </div>
+  </div>
 </div>
 
-<%= link_to "口コミする", new_experience_review_path(experience_id: params[:id]) %>
+<div class="border-top my-4 py-4">
+  <h3><%= @experience.user.first_name %>&nbsp;<%= @experience.user.last_name %>さんがホストする体験</h3>
+  <div class="card-group">
+    <div class="card rounded  mx-2 py-3">
+      <div class="box-part text-center"><i class="far fa-clock fa-3x" aria-hidden="true"></i></div>
+      <div class="card-body text-center">
+        <h5 class="card-title">時間</h5>
+        <p class="card-text">１日</p>
+      </div>
+    </div>
+    <div class="card rounded mx-2 py-3">
+      <div class="box-part text-center"><i class="far fa-comment fa-3x"></i></div>
+      <div class="card-body  text-center">
+          <h5 class="card-title">ガイド言語</h5>
+          <p class="card-text"><%= @experience.language %></p>
+        </div>
+      </div>
+    <div class="card rounded mx-2 py-3">
+      <div class="box-part text-center"><i class="fas fa-utensils fa-3x"></i></div>
+      <div class="card-body text-center">
+          <h5 class="card-title">食べ物</h5>
+          <p class="card-text">お茶、おにぎり</p>
+        </div>
+      </div>
+  </div>
+</div>
+  <% #体験できること %>
+  <div class="border-top my-4 py-4">
+    <h3>体験できること</h3>
+    <p><%= @experience.content %><p>
+  </div>
 
-<span>口コミ<%= @experience.reviews.count %>件</span>
+  <% #地図の表示 %>
+  <div class="border-top my-4 py-4">  
+      <h3>実施場所</h3>
+      <%= render partial: "map", class: "rounded" %>
+  </div>
 
-<% @reviews.each do |review| %>
-  <p>ユーザーID：<%= review.user_id %></p>
-  <p>コメント：<%= review.content %></p>
-  <p>評価：<%= review.rating %>点</p>
-  
-  <!--星評価-->
-  <div id="star-rate-<%= review.id %>"></div>
-  <script>
-  $('#star-rate-<%= review.id %>').raty({
-    size: 36,
-    starOff:  '<%= asset_path('star-off.png') %>',
-    starOn : '<%= asset_path('star-on.png') %>',
-    readOnly: true,
-    score: <%= review.rating %>,
-  });
-  </script>  
-<% end %>
+<% #予約機能 %>
+<div class="border-top my-4  py-4">
+  <h3>予約可能な日付から選択する</h3>
+  <div class="card rounded" style="width: 18rem">
+    <div class="card-body">
+      <h5 class="card-title">
+        <%= @experience.start_datetime.strftime('%-m月%-d日') %><br>
+      </h5>
+      <p class="card-text">
+        <%= @experience.start_datetime.strftime('%H:%M') %>
+        〜<%= @experience.finish_datetime.strftime('%H:%M') %>
+      </p>
+      <p><%= @experience.fee %>円/人</p>
+      <% if Booking.where(user_id: current_user.id, experience_id: params[:id]).any? %>
+        <button class="btn btn-primary">
+          <%= link_to 'キャンセル', experience_booking_path(@experience.id), method: :delete, data: {confirm: "予約をキャンセルしますか？"} %>
+        </button>
+      <% else %>
+        <button class="btn btn-primary">
+          <%= link_to '予約', experience_bookings_path(@experience.id), method: :post %>
+        </button>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<% #口コミ機能 %>
+<div class="border-top py-4">
+  <h3>
+    <% #星表示 %>
+      <%= image_tag(asset_path('star-on.png')) %>
+    <% #平均点 %>
+    <%= @experience.reviews.average(:rating).to_f.round(2) %>
+    <% #口コミ件数 %>
+    (<%= @experience.reviews.count %>件のレビュー)
+  </h3>
+
+  <% @reviews.each do |review| %>
+    <div class="card my-4 rounded">
+      <div class="card-body"> 
+        <p><%= review.user.first_name %>&nbsp;<%= review.user.last_name %></p>
+        <p><%= review.content %></p>
+      <!--星評価-->
+      <div id="star-rate-<%= review.id %>"></div>
+        <script>
+        $('#star-rate-<%= review.id %>').raty({
+          size: 36,
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
+          readOnly: true,
+          score: <%= review.rating %>,
+        });
+        </script> 
+      </div>
+    </div> 
+  <% end %>
+
+</div>
