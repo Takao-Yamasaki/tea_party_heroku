@@ -1,13 +1,12 @@
 <div class="card border-0" style="width: 60%;">
   <% #お気に入り機能 %>
   <p id="experience-<%= @experience.id %>", class="text-right">
-    <% if @experience.liked_by?(current_user) %>
-      <%= render partial: "like", experience: @experience %>
-    <% else %>
-      <%= render partial: "dislike", experience: @experience %>
-    <% end %>
+  <% if @experience.liked_by?(current_user) %>
+    <%= render partial: "like", experience: @experience %>
+  <% else %>
+    <%= render partial: "dislike", experience: @experience %>
+  <% end %>
   </p>
-
   <% #イメージ画像 %>
   <p><%= image_tag @experience.image.url, size: '800x500', class: "rounded" %></p>
   <h2 class="card-title">
@@ -22,7 +21,6 @@
     <% #口コミ件数 %>
     (<%= @experience.reviews.count %>).
     <%= @experience.prefecture %>
-    </div>
   </div>
 </div>
 
