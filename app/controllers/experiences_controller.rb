@@ -22,7 +22,9 @@ class ExperiencesController < ApplicationController
   end
 
   def create
-    Experience.create(experience_params)
+    experience = Experience.new(experience_params)
+    experience.user_id = current_user.id
+    experience.save!
     redirect_to action: :index
   end
 

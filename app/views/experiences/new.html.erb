@@ -1,5 +1,5 @@
 <h1>体験をホストする</h1>
-<%= form_with model: @experience, url:"/experiences", method: :post, class: "card col-md-6", local: true do |f| %>
+<%= form_with model: @experience, class: "card col-md-6", local: true do |f| %>
   <div class="card-body">
     <div class="form-row">
       <div class="form-group col-md-12">
@@ -10,7 +10,7 @@
         <label for="inputFee">料金</label>
         <%= f.text_field :fee, class: "form-control", id: "inputFee", placeholder: "料金" %>
       </div>
-    </>
+    </div>
     <div class="form-group col-md-12">
       <label for="InputPrefecture">都道府県</label>
       <%= f.text_field :prefecture, class: "form-control", id: "InputPrefecture", placeholder: "都道府県" %>
