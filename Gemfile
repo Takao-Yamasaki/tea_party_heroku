@@ -40,6 +40,9 @@ gem "font-awesome-rails"
 # 星レビューのデザイン用
 # gem 'bulma-rails'
 
+# 本番環境へのデータ移行
+gem 'seed_dump'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
