@@ -12,17 +12,17 @@ https://tearip.herokuapp.com/
 
 ## アプリの機能
 ### Ruby on Railsで開発したアプリです  
-*体験検索機能（ransack）
-*体験予約機能
-*体験投稿機能
-*お気に入り登録機能（非同期処理）
-*GoogleMap表示機能（GoogleMap API）  
-*体験にコメントを付ける機能（raty）
-*認証機能（devise）  
-*画像投稿機能（S3,carrierwave）
-*ページネーション機能（kaminari）
-*データベース（PostgreSQL）
-*インフラ（Heroku）
+* 体験検索機能（ransack）
+* 体験予約機能
+* 体験投稿機能
+* お気に入り登録機能（非同期処理）
+* GoogleMap表示機能（GoogleMap API）  
+* 体験にコメントを付ける機能（raty）
+* 認証機能（devise）  
+* 画像投稿機能（S3,carrierwave）
+* ページネーション機能（kaminari）
+* データベース（PostgreSQL）
+* インフラ（Heroku）
 
 ## 使い方
 1.画面右上の「ログイン」からテストユーザでログイン  
