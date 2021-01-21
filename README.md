@@ -39,7 +39,7 @@ https://tearip.herokuapp.com/
 
 ## 作者
 山崎 貴生  
-mail to: captain_kaeru@yahoo.co.jp
+mail to: captain_kaeru @yahoo.co.jp
 
 ## ライセンス
 This project is licensed free.  
