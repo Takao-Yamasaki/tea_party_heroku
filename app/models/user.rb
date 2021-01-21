@@ -17,4 +17,11 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   # ImageUploaderとusersテーブルのimageカラムと連携
   mount_uploader :image, ImageUploader
+
+  #ゲストユーザーログイン
+  def self.guest
+    find_by(email: 'test@example.com') do |user|
+      user.password = 'password'
+    end
+  end
 end

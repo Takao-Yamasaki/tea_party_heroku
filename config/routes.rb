@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   root to: 'experiences#index' 
   devise_for :users
+
+  # ゲストログイン機能
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#new_guest'
+  end
+
   resources :users do
     resources :bookings
   end
