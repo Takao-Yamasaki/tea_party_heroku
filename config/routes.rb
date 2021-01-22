@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root to: 'experiences#index' 
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
 
   # ゲストログイン機能
   devise_scope :user do
