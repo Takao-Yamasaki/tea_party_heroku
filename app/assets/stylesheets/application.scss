@@ -44,60 +44,20 @@ body {
 
 .btn-default {
 
-  background-color: #008000;
-  border-color: #008000;
+  background-color: #28a745;
+  border-color: #28a745;
   color: #FFF;
   border-radius: 10%;
  
   &:hover {
-   background-color: #008000;
-   border-color: #008000;
+   background-color: #28a745;
+   border-color: #28a745;
    color: #FFF;
    }
  
    &:active {
-    background-color: #008000;
-    border-color: #008000;
+    background-color: #28a745;
+    border-color: #28a745;
     
    }
 }
-
-.btn-primary {
-
-  background-color: #008000;
-  border-color: #008000;
-  border-radius: 10%;
- 
-  &:hover {
-   background-color: #008000;
-   border-color: #008000;
-   }
- 
-   &:active {
-    background-color: #008000;
-    border-color: #008000;
-   }
-}
-
-.btn-primary a {
-  color: #FFFFFF;
- 
-  &:hover {
-   color: #FFFFFF;
-   }
- 
-   &:active {
-    color: #FFFFFF;
-   }
-}
-
-.guestbtn {
-  text-decoration: none;
-}
-
-// img {
-//   border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
-//   width: 100px;  /* 縦横を同じ値にする */
-//   height: 100px;  /* 縦横を同じ値にする */
-//   object-fit: cover; /* 縦横比固定したまま上2つの縦横の範囲内に収まるように配置する */
-// }
