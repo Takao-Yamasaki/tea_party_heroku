@@ -2,34 +2,32 @@
   <h1>身近にある、特別な茶摘み体験。</h1>
 </div>
 
-<div class="container-fluid" style="margin: 22px">
+<div class="container" style="margin: 22px">
   <h2>茶摘みを体験しよう</h2>
   <p>現地の生産者が案内するユニークな体験。</p>
 </div>
 
   <% if @experiences.any? %>
-    <div class="container-fluid mx-auto">
       <div class="row">
-      <% @experiences.each do |experience| %>
-        <div class="card border-0 col-md-3">
-          <%= link_to(experience_path(experience),{class: "card-link"}) do %>
-              <%= image_tag experience.image.url, size: '300x300',class:"card-img-top rounded" %>
-              <div class="card-body">
-                <% #星表示 %>
-                <%= image_tag(asset_path('star-on.png')) %>
-                <% #平均点 %>
-                <%= experience.reviews.average(:rating).to_f.round(2) %>
-                <% #口コミ件数 %>
-                (<%= experience.reviews.count %>).
-                <%= experience.prefecture %><br>
-                <h5 class="card-title"><%= experience.title %></h5>
-                １人当たり￥<%= experience.fee %>から
-              </div>
-          <% end %>
-        </div>
-      <% end %>
+        <% @experiences.each do |experience| %>
+          <div class="card border-0 col-md-3" style="width: 18rem">
+            <%= link_to(experience_path(experience),{class: "card-link"}) do %>
+                <%= image_tag experience.image.url, size: '400x250',class:"card-img-top rounded" %>
+                <div class="card-body">
+                  <% #星表示 %>
+                  <%= image_tag(asset_path('star-on.png')) %>
+                  <% #平均点 %>
+                  <%= experience.reviews.average(:rating).to_f.round(2) %>
+                  <% #口コミ件数 %>
+                  (<%= experience.reviews.count %>).
+                  <%= experience.prefecture %><br>
+                  <h5 class="card-title"><%= experience.title %></h5>
+                  １人当たり￥<%= experience.fee %>から
+                </div>
+            <% end %>
+          </div>
+        <% end %>
       </div>
-    </div>
   <% else %>
     <p>お探しの体験はありませんでした</p> 
   <% end %>
