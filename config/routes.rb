@@ -11,9 +11,10 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :bookings
+    resources :likes
   end
   resources :experiences do
-    resource :likes, only: [:create, :destroy]
+    resource :likes
     resources :bookings
     resources :reviews, only: [:new, :create]
   end

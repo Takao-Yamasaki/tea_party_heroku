@@ -1,0 +1,26 @@
+<h1>お気に入りの体験</h1>
+
+<% if @likes.any? %>
+    <div class="row">
+    <% @likes.each do |like| %>
+      <div class="card border-0 col-lx" style="width: 21rem; margin: 10px">
+        <%= link_to(experience_path(like.experience_id),{class: "card-link"}) do %>
+            <%= image_tag like.experience.image.url, size: '300x300',class:"card-img-top rounded" %>
+            <div class="card-body">
+              <% #星表示 %>
+              <%= image_tag(asset_path('star-on.png')) %>
+              <% #平均点 %>
+              <%= like.experience.reviews.average(:rating).to_f.round(2) %>
+              <% #口コミ件数 %>
+              (<%= like.experience.reviews.count %>).
+              <%= like.experience.prefecture %><br>
+              <h5 class="card-title"><%= like.experience.title %></h5>
+              １人当たり￥<%= like.experience.fee %>から
+            </div>
+        <% end %>
+      </div>
+    <% end %>
+    </div>
+  <% else %>
+    <p>お探しの体験はありませんでした</p> 
+  <% end %>
