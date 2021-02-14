@@ -80,7 +80,9 @@ test:
 #
 production:
   <<: *default
-  database: teaparty_production
-  username: postgres
-  password: <%= Rails.application.credentials.db[:password] %>
-  host: <%= Rails.application.credentials.db[:hostname] %>
+  <% if Rails.application.credentials.database.present? %>
+    database: teaparty_production
+    username: postgres
+    password: <%= Rails.application.credentials.db[:password] %>
+    host: <%= Rails.application.credentials.db[:hostname] %>
+  <% end %>
