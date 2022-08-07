@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.5'
+ruby '3.1.1'
 
 gem 'rails', '6.0.3.4'
 gem 'pg', '>= 0.18', '< 2.0'
@@ -37,11 +37,11 @@ gem 'geocoder'
 
 gem "font-awesome-rails"
 
-# 星レビューのデザイン用
-# gem 'bulma-rails'
-
 # 本番環境へのデータ移行
 gem 'seed_dump'
+
+# unknown alias: defaultのエラー解決のため
+gem 'psych', '~> 3.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
