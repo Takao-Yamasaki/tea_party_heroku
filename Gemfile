@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.1'
 
-gem 'rails', '6.0.3.4'
+gem 'rails', '6.1.6.1'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.1'
 gem 'sass-rails', '>= 6'
@@ -42,6 +42,12 @@ gem 'seed_dump'
 
 # unknown alias: defaultのエラー解決のため
 gem 'psych', '~> 3.1'
+
+# You don't have net-smtp installed in your application. Please add it to your Gemfile and run bundle installの解決のため
+gem 'net-smtp'
+
+# LoadError: cannot load such file -- mimemagic/overlayのエラー解決のため
+gem 'mimemagic', '~> 0.3.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
