@@ -80,7 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: tearip_production
-  username: postgres
-  password: <%= Rails.application.credentials.db[:password] %>
-  host: <%= Rails.application.credentials.db[:hostname] %>
+  database: teaparty_production
+  username: teaparty
+  password: <%= ENV['TEAPARTY_DATABASE_PASSWORD'] %>

@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.5'
+ruby '3.1.1'
 
-gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
+gem 'rails', '6.1.6.1'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.1'
 gem 'sass-rails', '>= 6'
@@ -37,11 +37,17 @@ gem 'geocoder'
 
 gem "font-awesome-rails"
 
-# 星レビューのデザイン用
-# gem 'bulma-rails'
-
 # 本番環境へのデータ移行
 gem 'seed_dump'
+
+# unknown alias: defaultのエラー解決のため
+gem 'psych', '~> 3.1'
+
+# You don't have net-smtp installed in your application. Please add it to your Gemfile and run bundle installの解決のため
+gem 'net-smtp'
+
+# LoadError: cannot load such file -- mimemagic/overlayのエラー解決のため
+gem 'mimemagic', '~> 0.3.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -50,25 +56,25 @@ end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
-  gem 'listen', '~> 3.2'
+  gem 'web-console'
+  gem 'listen'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
-  gem "capistrano", "~> 3.10", require: false
-  gem "capistrano-rails", "~> 1.6", require: false
-  gem 'capistrano-rbenv', '~> 2.2'
-  gem 'capistrano-rbenv-vars', '~> 0.1'
-  gem 'capistrano3-puma', '~> 4.0'
+  gem 'spring-watcher-listen'
+  gem "capistrano", require: false
+  gem "capistrano-rails", require: false
+  gem 'capistrano-rbenv'
+  gem 'capistrano-rbenv-vars'
+  gem 'capistrano3-puma'
 end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
+  gem 'capybara'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data'
