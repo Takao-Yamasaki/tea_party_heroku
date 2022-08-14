@@ -11,7 +11,8 @@ RUN apt-get update -qq && apt-get install -y nodejs build-essential libpq-dev po
 
 WORKDIR /tea_party
 COPY Gemfile Gemfile.lock /tea_party/
-RUN bundle install
+RUN bundle config --local path 'vendor/bundle' \
+    && bundle install 
 
 RUN yarn install
 RUN bundle exec rails webpacker:install
