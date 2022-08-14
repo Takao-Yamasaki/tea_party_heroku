@@ -1,6 +1,6 @@
 FROM ruby:3.1.1
 
-ENV RAILS_ENV=production
+ENV RAILS_ENV=production 
 
 # yarnパッケージ管理ツールをインストール
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
@@ -18,4 +18,4 @@ RUN bundle exec rails webpacker:install
 
 COPY start.sh /start.sh
 RUN chmod 744 /start.sh
-CMD  ["sh", "/start.sh"]
+CMD ["sh", "/start.sh"]
