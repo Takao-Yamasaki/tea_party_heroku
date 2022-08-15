@@ -8,7 +8,6 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.1'
 gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.0'
-# gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 #サンプルデータの生成
@@ -48,11 +47,6 @@ gem 'net-smtp'
 
 # LoadError: cannot load such file -- mimemagic/overlayのエラー解決のため
 gem 'mimemagic', '~> 0.3.0'
-
-# Ruby3.1から除外されているため、明示的に指定
-gem 'net-imap'
-gem 'net-pop'
-gem 'net-smtp'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

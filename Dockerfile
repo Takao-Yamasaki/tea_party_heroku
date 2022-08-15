@@ -1,24 +1,17 @@
 FROM ruby:3.1.1
 
-ENV RAILS_ENV=production 
+# yarnパッケージ管理ツールをインストール(yarnはwebpackerをインストールする際に必要)
+RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
+    apt-get update && apt-get install -y yarn
 
-# yarnパッケージ管理ツールをインストール
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-
-# 必要なライブラリをインストール(nodejsとyarnはwebpackerをインストールする際に必要)
-RUN apt-get update -qq && apt-get install -y nodejs build-essential libpq-dev postgresql-client yarn
+# 必要なライブラリをインストール(nodejsはwebpackerをインストールする際に必要)
+RUN apt-get update -qq && apt-get install -y nodejs build-essential libpq-dev postgresql-client
 
 WORKDIR /tea_party
-# 開発用
-# COPY Gemfile Gemfile.lock /tea_party/
-COPY . /tea_party
-RUN bundle config --local set path 'vender/bundle' \
-    && bundle install
+COPY Gemfile Gemfile.lock /tea_party/
+RUN bundle install
 
-# RUN yarn install
-# RUN bundle exec rails webpacker:install
-
-COPY start.sh /start.sh
-RUN chmod 744 /start.sh
-CMD ["sh", "/start.sh"]
+RUN yarn install
+RUN bundle exec rails webpacker:install
