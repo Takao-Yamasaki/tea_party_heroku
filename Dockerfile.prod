@@ -13,7 +13,7 @@ WORKDIR /tea_party
 COPY Gemfile Gemfile.lock /tea_party/
 RUN bundle install
 
-RUN yarn install
+RUN yarn install --check-files
 RUN bundle exec rails webpacker:install
 COPY . /tea_party
 
