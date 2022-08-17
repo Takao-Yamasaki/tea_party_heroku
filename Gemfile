@@ -43,6 +43,9 @@ gem 'seed_dump'
 gem 'psych', '~> 3.1'
 
 # You don't have net-smtp installed in your application. Please add it to your Gemfile and run bundle installの解決のため
+# Ruby3.1系からgem化された
+gem 'net-imap'
+gem 'net-pop'
 gem 'net-smtp'
 
 # LoadError: cannot load such file -- mimemagic/overlayのエラー解決のため
