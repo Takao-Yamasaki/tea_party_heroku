@@ -1,5 +1,8 @@
 FROM ruby:3.1.1
 
+# apt-utilsのインストール時に表示される警告を無視
+ENV  DEBCONF_NOWWARNINGS=yes
+
 # yarnパッケージ管理ツールをインストール(yarnはwebpackerをインストールする際に必要)
 RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
