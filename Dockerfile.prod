@@ -18,7 +18,10 @@ RUN bundle install
 
 RUN yarn install --check-files
 RUN bundle exec rails webpacker:install
+# Sprockets
 RUN bundle exec rails assets:precompile
+# Webpacker
+RUN bundle exec rails webpacker:compile
 COPY . /tea_party
 
 COPY entrypoint.sh /usr/bin/
