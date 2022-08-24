@@ -16,13 +16,13 @@ WORKDIR /tea_party
 COPY Gemfile Gemfile.lock /tea_party/
 RUN bundle install
 
+COPY . /tea_party
 RUN yarn install --check-files
 RUN bundle exec rake webpacker:install
 # Sprockets
 RUN bundle exec rake assets:precompile
 # Webpacker
 RUN bundle exec rake webpacker:compile
-COPY . /tea_party
 
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
