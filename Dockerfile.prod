@@ -17,11 +17,11 @@ COPY Gemfile Gemfile.lock /tea_party/
 RUN bundle install
 
 RUN yarn install --check-files
-RUN bundle exec rails webpacker:install
+RUN bundle exec rake webpacker:install
 # Sprockets
-RUN bundle exec rails assets:precompile
+RUN bundle exec rake assets:precompile
 # Webpacker
-RUN bundle exec rails webpacker:compile
+RUN bundle exec rake webpacker:compile
 COPY . /tea_party
 
 COPY entrypoint.sh /usr/bin/
