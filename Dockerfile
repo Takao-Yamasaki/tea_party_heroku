@@ -13,5 +13,11 @@ WORKDIR /tea_party
 COPY Gemfile Gemfile.lock /tea_party/
 RUN bundle install
 
-RUN yarn install
-RUN bundle exec rails webpacker:install
+COPY entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/entrypoint.sh
+# 一番最初に実行するコマンドを指定
+ENTRYPOINT ["entrypoint.sh"]
+# コンテナがリッスンするポート番号を指定
+EXPOSE 3000
+# railsサーバーを起動
+CMD ["rails", "server", "-b", "0.0.0.0"]
