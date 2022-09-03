@@ -9,5 +9,3 @@ require("bootstrap/dist/js/bootstrap")
 require("@fortawesome/fontawesome-free/js/all")
 window.$ = window.jQuery = require('jquery');
 require('packs/raty')
-
-import '../stylesheets/application'
