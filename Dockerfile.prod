@@ -25,5 +25,10 @@ RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 # コンテナがリッスンするポート番号を指定
 EXPOSE 3000
+
+# nginxコンテナからrailsコンテナのsockファイル見えるようにする
+VOLUME /app/public
+VOLUME /app/tmp
+
 # railsサーバーを起動
 CMD ["rails", "server", "-b", "0.0.0.0"]
